@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Versatile Animated CV</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f0faff, #d0f0f5);
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 3em 1em;
+      background: #003f5c;
+      color: white;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
+    section {
+      padding: 2em;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 1.5em;
+      margin-bottom: 2em;
+      position: relative;
+      z-index: 2;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <header>
+    <h1>Your Name</h1>
+    <p>Creative Developer | Designer | Problem Solver</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>About Me</h2>
+      <p>A short and compelling bio that highlights your strengths and passion.</p>
+    </div>
+    <div class="card">
+      <h2>Skills</h2>
+      <ul>
+        <li>JavaScript, HTML, CSS</li>
+        <li>React, Node.js</li>
+        <li>Adobe Suite, Figma</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Experience</h2>
+      <p>Job Title @ Company — Duration<br />Description of your role and achievements.</p>
+    </div>
+  </section>
+
+  <script>
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    const num = 100;
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 2 + 1;
+        this.vx = (Math.random() - 0.5) * 0.8;
+        this.vy = (Math.random() - 0.5) * 0.8;
+        this.gravity = 0.02;
+        this.opacity = Math.random();
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy + this.gravity;
+        this.opacity += 0.002 * (Math.random() - 0.5);
+
+        if (this.y > canvas.height || this.x < 0 || this.x > canvas.width) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 150, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < num; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let particle of particles) {
+        particle.update();
+        particle.draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>

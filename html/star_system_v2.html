@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ultimate Gravity Star System</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<canvas id="starCanvas"></canvas>
+
+<script>
+const canvas = document.getElementById('starCanvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const stars = [];
+const numStars = 50;
+const nebula = [];
+
+class Star {
+  constructor(x, y, mass) {
+    this.x = x;
+    this.y = y;
+    this.mass = mass; // Mass influences gravity
+    this.vx = (Math.random() - 0.5) * 1;
+    this.vy = (Math.random() - 0.5) * 1;
+    this.radius = Math.sqrt(this.mass) * 2;
+    this.baseColor = Math.random() * 360;
+  }
+
+  draw() {
+    const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+    const brightness = Math.min(100, 50 + speed * 500); // speed affects brightness
+    ctx.beginPath();
+    ctx.fillStyle = `hsl(${this.baseColor}, 100%, ${brightness}%)`;
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+
+    // bounce off walls
+    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+  }
+}
+
+class NebulaParticle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.radius = Math.random() * 50 + 20;
+    this.opacity = Math.random() * 0.1 + 0.02;
+    this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    this.speedX = (Math.random() - 0.5) * 0.2;
+    this.speedY = (Math.random() - 0.5) * 0.2;
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.globalAlpha = this.opacity;
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1.0;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < -100) this.x = canvas.width + 100;
+    if (this.x > canvas.width + 100) this.x = -100;
+    if (this.y < -100) this.y = canvas.height + 100;
+    if (this.y > canvas.height + 100) this.y = -100;
+  }
+}
+
+// Create stars
+for (let i = 0; i < numStars; i++) {
+  let x = Math.random() * canvas.width;
+  let y = Math.random() * canvas.height;
+  let mass = Math.random() * 5 + 2;
+  stars.push(new Star(x, y, mass));
+}
+
+// Create nebula
+for (let i = 0; i < 30; i++) {
+  let x = Math.random() * canvas.width;
+  let y = Math.random() * canvas.height;
+  nebula.push(new NebulaParticle(x, y));
+}
+
+function animate() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Draw nebula background
+  for (let n of nebula) {
+    n.update();
+    n.draw();
+  }
+
+  // Apply gravity and merge stars
+  for (let i = 0; i < stars.length; i++) {
+    let starA = stars[i];
+    for (let j = i + 1; j < stars.length; j++) {
+      let starB = stars[j];
+      let dx = starB.x - starA.x;
+      let dy = starB.y - starA.y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+      distance = Math.max(distance, 5); // avoid too strong force
+
+      if (distance < (starA.radius + starB.radius) * 0.5) {
+        // Merge stars
+        starA.mass += starB.mass;
+        starA.radius = Math.sqrt(starA.mass) * 2;
+        starA.vx = (starA.vx * starA.mass + starB.vx * starB.mass) / (starA.mass + starB.mass);
+        starA.vy = (starA.vy * starA.mass + starB.vy * starB.mass) / (starA.mass + starB.mass);
+
+        // Remove starB
+        stars.splice(j, 1);
+        j--;
+        continue;
+      }
+
+      // Gravity attraction
+      let force = (starA.mass * starB.mass) / (distance * distance);
+      let ax = force * dx / distance;
+      let ay = force * dy / distance;
+
+      starA.vx += ax / starA.mass;
+      starA.vy += ay / starA.mass;
+      starB.vx -= ax / starB.mass;
+      starB.vy -= ay / starB.mass;
+    }
+  }
+
+  // Update and draw stars
+  for (let star of stars) {
+    star.update();
+    star.draw();
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// Resize window
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+</body>
+</html>

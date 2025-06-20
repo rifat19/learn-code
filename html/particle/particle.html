@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        canvas {
+            display: block;;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="dotCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('dotCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size to full window
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Number of particles
+        const numDots = 300;
+
+        // Draw static dots
+        for (let i = 0; i < numDots; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const radius = 2; // Fixed radius for all dots
+
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = "white"; // white color
+            ctx.fill();
+        }
+    </script>
+    
+</body>
+</html>

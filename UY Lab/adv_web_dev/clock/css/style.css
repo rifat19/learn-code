@@ -1,0 +1,18 @@
+body {
+    background-color: #999;
+}
+
+#clock {
+    height: 100px;
+    width: 400px;
+    background-color: green;
+    margin: 17rem auto;
+    line-height: 100px;
+    color: white;
+    font-size: 70px;
+    text-align: center;
+    font-family: monospace;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.5s ease;
+}

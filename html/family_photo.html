@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Family Art Frame</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #f0f8ff, #cce7ff);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .frame {
+      border: 12px solid #444;
+      padding: 10px;
+      border-radius: 15px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      background: white;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 1s ease-in-out;
+    }
+
+    .frame:hover img {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 10px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="frame">
+    <img src="family.jpg" alt="Family Photo">
+    <h2>Our Family Moment</h2>
+  </div>
+
+</body>
+</html>

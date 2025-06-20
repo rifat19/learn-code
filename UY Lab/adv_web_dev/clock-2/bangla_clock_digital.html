@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bangla Digital Clock</title>
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+  <!-- ✅ Google Font for Bangla -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: #111;
+      color: #0f0;
+      font-family: 'Noto Sans Bengali', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #clock {
+      font-size: 5rem;
+      background: #000;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="clock"></div>
+
+  <script>
+    // ✅ Convert English digits to Bangla digits
+    function toBanglaNumber(num) {
+      const banglaDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+      return num.toString().split('').map(d => banglaDigits[d] ?? d).join('');
+    }
+
+    setInterval(() => {
+      let date = new Date();
+      let hours = String(date.getHours()).padStart(2, '0');
+      let minutes = String(date.getMinutes()).padStart(2, '0');
+      let seconds = String(date.getSeconds()).padStart(2, '0');
+
+      // ✅ Convert to Bangla before displaying
+      const banglaTime = `${toBanglaNumber(hours)}:${toBanglaNumber(minutes)}:${toBanglaNumber(seconds)}`;
+      document.getElementById('clock').innerHTML = banglaTime;
+    }, 1000);
+  </script>
+
+</body>
+</html>

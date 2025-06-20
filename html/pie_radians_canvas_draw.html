@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radians vs Degrees</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        // Draw circle
+        ctx.beginPath();
+        ctx.arc(200, 200, 150, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        // Draw center
+        ctx.fillStyle = "black";
+        ctx.fillRect(198, 198, 4, 4);
+
+        // Draw lines for π radians (180 degrees)
+        ctx.beginPath();
+        ctx.moveTo(50, 200);  // Left edge of the circle (π radians)
+        ctx.lineTo(350, 200); // Right edge (0 radians)
+        ctx.stroke();
+
+        // Label angles
+        ctx.fillStyle = "black";
+        ctx.font = "16px Arial";
+        ctx.fillText("0 radians (0°)", 360, 200);
+        ctx.fillText("π radians (180°)", 10, 200);
+        ctx.fillText("π/2 radians (90°)", 205, 50);
+        ctx.fillText("3π/2 radians (270°)", 185, 370);
+
+        // Draw lines for π/2 and 3π/2 radians
+        ctx.beginPath();
+        ctx.moveTo(200, 50);  // Top (π/2 radians)
+        ctx.lineTo(200, 350); // Bottom (3π/2 radians)
+        ctx.stroke();
+    </script>
+</body>
+</html>

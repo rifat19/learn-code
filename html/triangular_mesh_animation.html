@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Floating Triangular Mesh</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+// Mouse position
+const mouse = { x: null, y: null };
+window.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+
+// Create points
+const points = [];
+const POINT_COUNT = 100;
+for (let i = 0; i < POINT_COUNT; i++) {
+    points.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.5, // slow gravity-like drift
+        vy: (Math.random() - 0.5) * 0.5
+    });
+}
+
+function distance(p1, p2) {
+    return Math.hypot(p1.x - p2.x, p1.y - p2.y);
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Move points
+    for (let p of points) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Bounce off edges
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+    }
+
+    // Draw triangles
+    for (let i = 0; i < points.length; i++) {
+        for (let j = i+1; j < points.length; j++) {
+            for (let k = j+1; k < points.length; k++) {
+                const p1 = points[i];
+                const p2 = points[j];
+                const p3 = points[k];
+                const d1 = distance(p1, p2);
+                const d2 = distance(p2, p3);
+                const d3 = distance(p3, p1);
+
+                const maxDist = 120; // maximum distance to form triangle
+
+                if (d1 < maxDist && d2 < maxDist && d3 < maxDist) {
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.lineTo(p3.x, p3.y);
+                    ctx.closePath();
+                    ctx.strokeStyle = "rgba(0,255,255,0.2)";
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    // Draw points
+    for (let p of points) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "cyan";
+        ctx.fill();
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>

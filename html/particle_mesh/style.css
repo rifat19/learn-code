@@ -1,0 +1,11 @@
+/* Remove margin/padding, hide scrollbars, set background */
+body, html {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: #000;
+}
+
+canvas {
+	display: block;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Horizontal Dropdown Menu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: #f3f3f3;
+    }
+
+    nav {
+      background: #333;
+      width: 100%;
+    }
+
+    /* Top-level menu: horizontal */
+    ul.menu {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+    }
+
+    ul.menu > li {
+      position: relative;
+    }
+
+    ul.menu a {
+      display: block;
+      color: white;
+      padding: 15px 25px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    ul.menu a:hover {
+      background: #444;
+    }
+
+    /* Dropdown menus */
+    ul.menu li ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #444;
+      display: none;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      min-width: 180px;
+      z-index: 999;
+    }
+
+    ul.menu li:hover > ul {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Sub-sub-menu (flies out to right) */
+    ul.menu li ul li ul {
+      left: 100%;
+      top: 0;
+      background: #555;
+    }
+
+    ul.menu li ul li:hover > ul {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul class="menu">
+    <li><a href="#">Home</a></li>
+    <li>
+      <a href="#">About</a>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li>
+          <a href="#">Team</a>
+          <ul>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Designers</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+</body>
+</html>

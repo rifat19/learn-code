@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Following Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #111;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+// Mouse position
+let mouse = { x: width / 2, y: height / 2};
+
+// Listen to mouse movement
+canvas.addEventListener('mousemove', function(event) {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+});
+
+// Circle trail array
+let circles = [];
+
+function animate() {
+    ctx.fillStyle = 'rgba(17, 17, 17, 0.2)'; // Semi-transparent background
+    ctx.fillRect(0, 0, width, height);
+
+    circles.push({ x: mouse.x, y: mouse.y, radius: 10, opacity: 1 });
+
+    // Update and draw circles
+    for (let i = 0; i < circles.length; i++) {
+        let c = circles[i];
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, c.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 200, 255, ${c.opacity})`;
+        ctx.fill();
+
+        c.radius += 0.5; // Increase radius
+        c.opacity -= 0.02; // Decrease opacity
+    }
+
+    // Remove invisible circles
+    circles = circles.filter(c => c.opacity > 0);
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>

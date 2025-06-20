@@ -1,0 +1,98 @@
+Here’s a customized learning plan to guide you through becoming a professional in three major programming paths: **Web Development**, **Data Science/AI**, and **System Programming/DevOps**. You can follow these tracks sequentially or in parallel, depending on your time and interest.
+
+---
+
+### 🌐 Web Development Track (6–9 months)
+
+**Phase 1: Front-End Basics (1–2 months)**
+
+* HTML5, CSS3 (Box model, Flexbox, Grid)
+* JavaScript (ES6+ syntax, DOM manipulation)
+* Practice: Build simple websites (portfolio, blog)
+
+**Phase 2: Advanced Front-End (1–2 months)**
+
+* Frameworks: React.js (or Vue.js)
+* Tooling: npm, Webpack, Babel
+* Version Control: Git & GitHub
+* Practice: Clone popular UIs (YouTube, Twitter)
+
+**Phase 3: Back-End & Full Stack (2–3 months)**
+
+* Node.js + Express.js
+* Databases: MongoDB or PostgreSQL
+* REST APIs, Authentication (JWT)
+* Practice: Full-stack app like a To-Do, Blog, or Chat
+
+**Phase 4: Real Projects & Deployment (1–2 months)**
+
+* Deployment: Netlify, Vercel, Render, or Heroku
+* CI/CD: GitHub Actions
+* Project ideas: Portfolio website, eCommerce site, Chat app
+
+---
+
+### 📊 Data Science / AI Track (9–12 months)
+
+**Phase 1: Programming & Math Foundations (1–2 months)**
+
+* Python (NumPy, Pandas, Matplotlib)
+* Math: Linear Algebra, Probability, Statistics
+
+**Phase 2: Machine Learning (2–3 months)**
+
+* Scikit-learn, Supervised & Unsupervised Learning
+* Projects: Predict house prices, customer churn
+
+**Phase 3: Deep Learning (2–3 months)**
+
+* TensorFlow or PyTorch
+* CNNs, RNNs, Transformers
+* Project: Image classifier, Chatbot, Text summarizer
+
+**Phase 4: NLP, Data Engineering & Deployment (3–4 months)**
+
+* NLP with HuggingFace Transformers
+* Data pipelines with Airflow / Spark
+* Model Deployment: FastAPI + Docker + Cloud (GCP/AWS)
+* Capstone project: Full pipeline ML system
+
+---
+
+### ⚙️ System Programming / DevOps Track (6–9 months)
+
+**Phase 1: System Fundamentals (1–2 months)**
+
+* C/C++ basics, memory management, pointers
+* Operating Systems concepts
+
+**Phase 2: Scripting & Automation (1–2 months)**
+
+* Bash scripting
+* Python for system tasks
+* Practice: Automate backups, file monitoring, etc.
+
+**Phase 3: DevOps Tools (2–3 months)**
+
+* Git, Docker, Kubernetes
+* CI/CD: Jenkins, GitHub Actions
+* Monitoring: Prometheus, Grafana
+
+**Phase 4: Cloud & Infrastructure (2–3 months)**
+
+* Cloud platforms: AWS / GCP / Azure
+* Infrastructure as Code: Terraform
+* Projects: Build and deploy a Kubernetes cluster with autoscaling
+
+---
+
+### 🔄 Weekly Routine (Recommended)
+
+* 📘 **5–10 hours/week** learning (video courses, books)
+* 🛠 **5–10 hours/week** coding & building projects
+* 🧠 **1–2 hours/week** reading articles, GitHub, Dev.to
+* 🎯 Break down large projects into weekly goals
+
+---
+
+Would you like specific course/platform suggestions for each step?

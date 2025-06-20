@@ -1,0 +1,135 @@
+That’s a solid and well-organized learning path — excellent foundation to become a professional web developer! 👏
+
+Let’s dive into **📅 Week 1: HTML Basics**.
+
+---
+
+## **📘 Week 1: HTML Basics — Daily Plan**
+
+### ✅ **Day 1: Introduction to HTML & Basic Structure**
+
+* **Topics:**
+
+  * What is HTML?
+  * Basic document structure (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`)
+  * Headings (`<h1>`–`<h6>`), paragraphs (`<p>`), line breaks, horizontal rules
+
+* **Tasks:**
+
+  * Read Chapter 1–2 of *HTML and CSS* by Jon Duckett
+  * Create a basic HTML document
+  * Practice using headings, paragraphs, and page structure
+
+* **Exercise:**
+
+  * Create an HTML file that includes your name, a short bio, and a favorite quote.
+
+---
+
+### ✅ **Day 2: Text Formatting & Links**
+
+* **Topics:**
+
+  * Bold, italic, underline (`<strong>`, `<em>`, `<u>`)
+  * Lists (`<ul>`, `<ol>`, `<li>`)
+  * Hyperlinks (`<a href>`)
+
+* **Tasks:**
+
+  * Practice using text formatting and lists
+  * Add internal and external links
+
+* **Exercise:**
+
+  * Build a “My Favorite Sites” page with a list of links and descriptions.
+
+---
+
+### ✅ **Day 3: Images & Multimedia**
+
+* **Topics:**
+
+  * Embedding images (`<img>`), attributes (`src`, `alt`, `title`)
+  * Adding audio and video (optional: `<audio>`, `<video>`)
+
+* **Tasks:**
+
+  * Try different image formats (JPEG, PNG, SVG)
+  * Add responsive images using the `width` attribute or CSS
+
+* **Exercise:**
+
+  * Create a “My Gallery” page that shows 3–5 images with captions.
+
+---
+
+### ✅ **Day 4: Tables**
+
+* **Topics:**
+
+  * Table structure: `<table>`, `<tr>`, `<th>`, `<td>`
+  * Table headings, colspan, rowspan
+
+* **Tasks:**
+
+  * Create a schedule or price list using a table
+
+* **Exercise:**
+
+  * Make a “Weekly Study Plan” table with days of the week and topics.
+
+---
+
+### ✅ **Day 5: Forms**
+
+* **Topics:**
+
+  * Form elements: `<form>`, `<input>`, `<label>`, `<textarea>`, `<select>`, `<button>`
+  * Input types: text, password, checkbox, radio, date, etc.
+
+* **Tasks:**
+
+  * Practice creating form elements with labels
+
+* **Exercise:**
+
+  * Design a “Sign Up” form with name, email, password, gender, and interests.
+
+---
+
+### ✅ **Day 6: Semantic HTML**
+
+* **Topics:**
+
+  * Semantic tags: `<header>`, `<footer>`, `<main>`, `<nav>`, `<section>`, `<article>`, `<aside>`
+
+* **Tasks:**
+
+  * Understand how semantic HTML helps accessibility and SEO
+
+* **Exercise:**
+
+  * Rebuild your “My Bio” page using semantic structure
+
+---
+
+### ✅ **Day 7: Review & Mini Project**
+
+* **Tasks:**
+
+  * Review all you’ve learned
+  * Fix issues in your earlier exercises
+  * Ask questions if stuck
+
+* **Mini Project:**
+
+  * Build a **personal portfolio landing page** with:
+
+    * A short intro
+    * Links to your projects (real or placeholder)
+    * A contact form
+    * Responsive structure using basic CSS
+
+---
+
+Let me know when you’re ready to begin **Day 1**, and I’ll walk you through it step by step, including a coding template and check-in quiz if you'd like!

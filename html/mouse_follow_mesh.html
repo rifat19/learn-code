@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Mesh Wave</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #111;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+// Track mouse
+let mouse = { x: width/2, y: height/2 };
+canvas.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+
+// Create a grid of points
+const cols = 20;
+const rows = 20;
+const points = [];
+
+for (let y = 0; y <= rows; y++) {
+    for (let x = 0; x <= cols; x++) {
+        points.push({
+            x: (x / cols) * width,
+            y: (y / rows) * height,
+            originX: (x / cols) * width,
+            originY: (y / rows) * height,
+            vx: 0,
+            vy: 0
+        });
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Update points
+    for (let i = 0; i < points.length; i++) {
+        let p = points[i];
+        let dx = p.x - mouse.x;
+        let dy = p.y - mouse.y;
+        let dist = Math.sqrt(dx*dx + dy*dy);
+        let force = Math.min(150, dist);
+        let angle = Math.atan2(dy, dx);
+
+        p.vx += Math.cos(angle) * (150 - force) * 0.01;
+        p.vy += Math.sin(angle) * (150 - force) * 0.01;
+
+        p.vx *= 0.9; // friction
+        p.vy *= 0.9; // friction
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Pull back to original position
+        p.x += (p.originX - p.x) * 0.05;
+        p.y += (p.originY - p.y) * 0.05;
+    }
+
+    // Draw lines between points
+    ctx.strokeStyle = 'cyan';
+    ctx.lineWidth = 1;
+    for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+            let i = y * (cols + 1) + x;
+            ctx.beginPath();
+            ctx.moveTo(points[i].x, points[i].y);
+            ctx.lineTo(points[i + 1].x, points[i + 1].y);
+            ctx.lineTo(points[i + cols + 2].x, points[i + cols + 2].y);
+            ctx.lineTo(points[i + cols + 1].x, points[i + cols + 1].y);
+            ctx.closePath();
+            ctx.stroke();
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>
