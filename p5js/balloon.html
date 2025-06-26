@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>p5.js balloon</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    </head>
+    <body>
+        <script>
+            function setup() {
+                createCanvas(800, 600);
+                noStroke();
+
+                // Background
+                background("#00b0f0"); // Sky color
+
+                // String
+                stroke("#7f7f7f"); // String color
+                strokeWeight(2);
+                line(263, 280, 263, 548);
+
+                // balloon
+                noStroke();
+                fill("#ffc000"); // Balloon color
+                triangle(255, 289,
+                    263, 272,
+                    271, 289);
+                circle(263, 172, 220);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js boat</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+        
+        // Background
+        fill("#dae3f3");
+        rect(0, 0, 800, 300);
+        fill("#8faadc");
+        rect(0, 300, 800, 600);
+
+        // Mast
+        fill("#843c0c");
+        rect(280, 36, 16, 321);
+        fill("#ffd966");
+        triangle(300, 36, 450, 207, 300, 264);
+
+        // Boat
+        fill("#7030a0");
+        rect(178, 357, 319, 140);
+        triangle(105, 357, 178, 357, 178, 497);
+        triangle(573, 357, 497, 497, 497, 357);
+
+        // Birds
+        fill("#ed7d31");
+        triangle(529, 52, 578, 52, 553, 67);
+        triangle(631, 71, 677, 71, 654, 85);
+        triangle(722, 121, 766, 121, 743, 135);
+      }
+    </script>
+  </body>
+</html>

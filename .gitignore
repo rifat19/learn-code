@@ -1,0 +1,7 @@
+# Exclude video files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+product-management-app

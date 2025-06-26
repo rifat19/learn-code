@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+	<title>p5.js Car</title>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+	  function setup() {
+	    createCanvas(800, 600);
+		noStroke();
+		
+		// background
+		fill(180, 199, 231); // Sky color
+		rect(0, 0, 800, 500);
+		fill(191, 144, 0); // Ground color
+		rect(0, 500, 800, 100);
+		
+		// Sun
+		fill("yellow");
+		circle(750, 50, 150);
+		stroke("yellow");
+		strokeWeight(6);
+		line(480, 60, 561, 47);
+		line(548, 224, 602, 172);
+		line(740, 304, 747, 236);
+
+		// car
+		stroke("black");
+		strokeWeight(1);
+		fill(112, 173, 71);
+		rect(175, 340, 223, 54);
+		rect(108, 394, 362, 74);
+		fill(132, 60, 12);
+		circle(168, 468, 62);
+		circle(408, 468, 62);
+
+	  }
+	</script>
+  </body>
+
+
+</html>

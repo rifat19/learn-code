@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>p5.js Robot</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    </head>
+    <body>
+        <script>
+            function setup() {
+                createCanvas(800, 600);
+                noStroke();
+            }
+            
+            function draw() {
+
+                // Background
+                fill("#efefef");
+                rect(0, 0, 800, 430);
+                fill("#a7a7a7");
+                rect(0, 430, 800, 600);
+
+                // Head & Body
+                fill("#2e75b6");
+                rect(249, 54, 122, 83);
+                rect(211, 142, 200, 90);
+                rect(211, 240, 200, 90);
+
+                // Legs
+                rect(224, 338, 36, 124);
+                rect(368, 338, 36, 124);
+
+                // Arms
+                rect(182, 176, 16, 118);
+                rect(426, 155, 118, 16);
+
+                // Feet & Hands
+                fill("#1f4e79");
+                rect(214, 468, 55, 25);
+                rect(359, 468, 55, 25);
+                circle(190, 300, 25);
+                circle(553, 162, 25);
+
+                // Eyes
+                fill("white");
+                circle(278, 83, 23);
+                circle(347, 83, 23);
+                fill("black");
+                circle(283, 83, 15);
+                circle(352, 83, 15);
+
+                // Mouth
+                fill("#d8d8d8");
+                rect(285, 113, 53, 13);
+
+                // Decoration
+                fill("#fff2cc");
+                circle(250, 195, 20);
+                circle(315, 195, 20);
+                circle(380, 195, 20);
+                fill("#ffe699");
+                rect(230, 250, 165, 65);
+
+                // Lights
+                fill("#bdd7ee");
+                rect(638, 28, 104, 175);
+                fill("red");
+                rect(650, 45, 80, 43);
+                fill("#ffc000");
+                rect(650, 95, 80, 42);
+                fill("#00b050");
+                rect(650, 145, 80, 42);
+            }
+        </script>
+    </body>
+</html>

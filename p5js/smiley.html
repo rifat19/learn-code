@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>p5.js Smiley</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+</head>
+
+<body>
+    <script>
+        function setup() {
+            createCanvas(800, 600);
+            noStroke();
+            // drawGrid(40);
+        }
+
+        /* function drawGrid(spacing) {
+            stroke(220);
+            strokeWeight(1);
+            for (let x = 0; x <= width; x += spacing) {
+                line(x, 0, x, height);
+            }
+            for (let y = 0; y <= height; y += spacing) {
+                line(0, y, width, y);
+            }
+        } */
+
+        function drawGrid(spacing) {
+            stroke(220);
+            fill("#ff0000");
+            textSize(10);
+            for (let x = 0; x <= width; x += spacing) {
+                line(x, 0, x, height);
+                text(x, x + 2, 12);
+            }
+            for (let y = 0; y <= height; y += spacing) {
+                line(0, y, width, y);
+                text(y, 2, y - 2);
+            }
+        }
+
+        function draw() {
+
+            // Background
+            background("#548235");
+
+            fill("#ffc000");
+            circle(400, 300, 400);
+
+            fill("black");
+            circle(314, 206, 25);
+            circle(504, 206, 25);
+
+            fill("#c00000");
+            // angleMode(DEGREES);
+            arc(400, 340, 238, 196, 0, PI);
+
+            // drawGrid(40);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>p5.js House</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    </head>
+    <body>
+        <script>
+            function setup() {
+                createCanvas(800, 600);
+                noStroke();
+
+                // Background
+                fill("#00b0f0");
+                rect(0, 0, 800, 400);
+                fill("#548235");
+                rect(0, 400, 800, 200);
+
+                fill("#ffc740");
+                rect(109, 254, 325, 274);
+
+                // Left window
+                stroke("#c55a11");
+                strokeWeight(3);
+                fill("#dae3f3");
+                square(147, 302, 56);
+                line(175, 302, 175, 358);
+                line(147, 330, 203, 330);
+
+                // Right window
+                square(347, 330, 56);
+                line(375, 330, 375, 386);
+                line(347, 358, 403, 358);
+
+                // Door
+                strokeWeight(1);
+                fill("#ed7d31");
+                rect(229, 417, 90, 110);
+                fill("#bfbfbf");
+                circle(305, 471, 14);
+
+                // Horn
+                noStroke();
+                fill("#843c0c");
+                rect(154, 117, 24, 137);
+                rect(150, 110, 32, 7);
+
+                // Roof
+                fill("#ed7d31");
+                triangle(109, 254, 272, 75, 434, 254);
+
+                // Sun
+                fill("yellow");
+                circle(750, 50, 150);
+                stroke("yellow");
+                strokeWeight(6);
+                line(480, 60, 561, 47);
+                line(548, 224, 602, 172);
+                line(740, 340, 747, 236);
+            }
+        </script>
+    </body>
+</html>

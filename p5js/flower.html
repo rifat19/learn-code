@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>p5.js Flower</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    </head>
+    <body>
+        <script>
+            function setup() {
+                createCanvas(800, 600);
+                noStroke();
+
+                // Background
+                fill(0, 176,240);
+                rect(0, 0, 800, 200);
+                fill(84, 130, 53);
+                rect(0, 200, 800, 600);
+
+                // Stem
+                fill(146, 208, 80);
+                rect(277, 313, 30, 237);
+                ellipse(215, 514, 124, 46);
+                ellipse(374, 438, 134, 46);
+
+                // Flower petals
+                fill("red");
+                circle(290, 160, 187);
+                circle(209, 314, 187);
+                circle(377, 307, 187);
+                fill("yellow");
+                circle(290, 260, 126);
+
+            }
+        </script>
+    </body>
+</html>

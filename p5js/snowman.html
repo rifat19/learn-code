@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>p5.js Snow Man</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    </head>
+    <body>
+        <script>
+            function setup() {
+                createCanvas(800, 600);
+                noStroke();
+
+                // Background
+                background("#8faadc");
+
+                // Right hand
+                stroke("#843c0c");
+                strokeWeight(10);
+                line(604, 359, 495, 291);
+                line(604, 359, 607, 378);
+                line(604, 359, 627, 367);
+                line(604, 359, 627, 355);
+
+                // Body
+                stroke("#335693");
+                strokeWeight(1);
+                fill("white");
+                circle(400, 445, 300);
+                circle(400, 285, 240);
+                circle(400, 150, 176);
+
+                // Eyes
+                fill("black");
+                noStroke();
+                circle(366, 124, 20);
+                circle(428, 124, 20);
+
+                // Mouth
+                circle(362, 179, 12);
+                circle(379, 197, 12);
+                circle(403, 201, 12);
+                circle(428, 199, 12);
+
+                // Buttons
+                circle(407, 267, 20);
+                circle(407, 320, 20);
+                circle(407, 433, 20);
+                circle(407, 502, 20);
+
+                // Nose & Hat
+                fill("#ffc000");
+                triangle(397, 161, 401, 176, 483, 146);
+                fill("#c55a11");
+                triangle(300, 115, 335, 33, 425, 53);
+
+                // Left hand
+                stroke("#843c0c");
+                strokeWeight(10);
+                line(225, 168, 323, 265);
+                line(225, 168, 196, 171);
+                line(225, 168, 201, 157);
+                line(225, 168, 216, 135);
+
+            }
+        </script>
+    </body>
+</html>

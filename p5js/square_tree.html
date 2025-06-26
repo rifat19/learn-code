@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>p5.js Square Tree</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    </head>
+    <body>
+        <script>
+            function setup() {
+                createCanvas(800, 600);
+                noStroke();
+
+                // Background
+                fill("#aac6e7");
+                rect(0, 0, 800, 400);
+                fill("#c5e0b4");
+                rect(0, 400, 800, 600);
+
+                // Trunk
+                fill("#843c0c");
+                rect(212, 330, 120, 190);
+
+                // Leaves
+                fill("#548235");
+                rect(255, 158, 300, 220);
+                fill("#00b050");
+                rect(57, 197, 230, 150);
+                fill("#92d050");
+                rect(130, 55, 230, 190);
+            }
+        </script>
+    </body>
+</html>

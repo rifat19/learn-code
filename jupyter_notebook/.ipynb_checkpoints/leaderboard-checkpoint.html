@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Team Leaderboard</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    table {
+      width: 60%;
+      margin: auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: #0078ff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    .gold { background: gold; }
+    .silver { background: silver; }
+    .bronze { background: #cd7f32; }
+  </style>
+</head>
+<body>
+
+<h1>🏆 Coding Competition Leaderboard</h1>
+<table id="leaderboard">
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Team</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+const teams = [
+  { team: "Alpha", scores: [85, 90, 78] },
+  { team: "Beta", scores: [70, 75, 68] },
+  { team: "Gamma", scores: [92, 88, 95] },
+  { team: "Delta", scores: [60, 65, 58] },
+  { team: "Epsilon", scores: [78, 82, 80] },
+  { team: "Zeta", scores: [88, 90, 85] },
+  { team: "Eta", scores: [74, 76, 72] },
+  { team: "Theta", scores: [95, 93, 96] },
+  { team: "Iota", scores: [68, 70, 65] },
+  { team: "Kappa", scores: [80, 83, 79] }
+];
+
+// Calculate total scores
+teams.forEach(t => t.total = t.scores.reduce((a, b) => a + b, 0));
+
+// Sort by total descending
+teams.sort((a, b) => b.total - a.total);
+
+// Render leaderboard
+const tbody = document.querySelector("#leaderboard tbody");
+teams.forEach((t, i) => {
+  const row = document.createElement("tr");
+  if (i === 0) row.classList.add("gold");
+  else if (i === 1) row.classList.add("silver");
+  else if (i === 2) row.classList.add("bronze");
+
+  row.innerHTML = `
+    <td>${i + 1}</td>
+    <td>${t.team}</td>
+    <td>${t.total}</td>
+  `;
+  tbody.appendChild(row);
+});
+</script>
+
+</body>
+</html>
