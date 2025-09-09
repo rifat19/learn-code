@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Square Animation Mouse Effect</title>
+	<script src="p5/p5.js"></script>
+</head>
+<body>
+<script>
+  function setup() {
+    createCanvas(windowWidth, windowHeight, WEBGL);
+    noFill();
+    stroke(0);
+  }
+
+  function draw() {
+    background(255);
+
+    let mx = mouseX - width / 2;
+    let my = mouseY - height / 2;
+
+    for (let i = -width / 2; i < width / 2; i += 40) {
+      for (let j = -height / 2; j < height / 2; j += 40) {
+        push();
+
+        // Distance from mouse
+        let d = dist(i, j, mx, my);
+        let ripple = sin(d * 0.05 - frameCount * 0.1) * 10;
+
+        // Apply ripple distortion to position
+        translate(i + ripple, j + ripple);
+
+        // Organic rotation
+        rotateX(noise(i * 0.01, j * 0.01, frameCount * 0.01) * PI);
+        rotateY(noise(j * 0.01, i * 0.01, frameCount * 0.01) * PI);
+
+        // Size based on noise
+        let w = noise(i * 0.01, j * 0.01, frameCount * 0.01) * 40;
+        let h = noise(j * 0.01, i * 0.01, frameCount * 0.01) * 40;
+
+        rect(-w / 2, -h / 2, w, h);
+        pop();
+      }
+    }
+  }
+</script>
+</body>
+</html>

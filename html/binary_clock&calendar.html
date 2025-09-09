@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Binary Bulb Clock & Calendar</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .clock, .calendar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .bulb {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #333;
+      box-shadow: 0 0 5px #000;
+      transition: background 0.3s;
+    }
+
+    .on {
+      background: deepskyblue;
+      box-shadow: 0 0 10px cyan;
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💡 Binary Bulb Clock & Calendar</h1>
+
+  <div class="clock" id="clock"></div>
+  <!-- <h2>🕒 Clock</h2> -->
+
+  <div class="calendar" id="calendar"></div>
+  <!-- //<h2>📅 Calendar</h2> -->
+
+  <script>
+    const clockConfig = {
+      hour: [2, 2],
+      minute: [3, 4],
+      second: [3, 4]
+    };
+
+    const calendarConfig = {
+      day: [2, 4],
+      month: [1, 4],
+      year: [4, 4] // last two digits
+    };
+
+    function createSection(containerId, name, topCount, bottomCount) {
+      const container = document.getElementById(containerId);
+      const section = document.createElement('div');
+      section.className = 'section';
+      section.dataset.unit = name;
+
+      const topRow = document.createElement('div');
+      topRow.className = 'row top';
+      for (let i = 0; i < topCount; i++) {
+        const bulb = document.createElement('div');
+        bulb.className = 'bulb';
+        topRow.appendChild(bulb);
+      }
+
+      const bottomRow = document.createElement('div');
+      bottomRow.className = 'row bottom';
+      for (let i = 0; i < bottomCount; i++) {
+        const bulb = document.createElement('div');
+        bulb.className = 'bulb';
+        bottomRow.appendChild(bulb);
+      }
+
+      section.appendChild(topRow);
+      section.appendChild(bottomRow);
+      container.appendChild(section);
+    }
+
+    // Create clock sections
+    for (let unit in clockConfig) {
+      createSection('clock', unit, clockConfig[unit][0], clockConfig[unit][1]);
+    }
+
+    // Create calendar sections
+    for (let unit in calendarConfig) {
+      createSection('calendar', unit, calendarConfig[unit][0], calendarConfig[unit][1]);
+    }
+
+    function updateBulbs(sectionName, value) {
+      const section = document.querySelector(`.section[data-unit="${sectionName}"]`);
+      const topBulbs = section.querySelectorAll('.top .bulb');
+      const bottomBulbs = section.querySelectorAll('.bottom .bulb');
+
+      const strVal = value.toString().padStart(2, '0');
+      const top = parseInt(strVal[0]);
+      const bottom = parseInt(strVal[1]);
+
+      const topBinary = top.toString(2).padStart(topBulbs.length, '0');
+      const bottomBinary = bottom.toString(2).padStart(bottomBulbs.length, '0');
+
+      topBinary.split('').forEach((bit, i) => {
+	    if (topBulbs[i]) {
+          topBulbs[i].classList.toggle('on', bit === '1');
+		}
+      });
+
+      bottomBinary.split('').forEach((bit, i) => {
+	    if (bottomBulbs[i]) {
+          bottomBulbs[i].classList.toggle('on', bit === '1');
+		}
+      });
+    }
+
+    function updateClockAndCalendar() {
+      const now = new Date();
+      const time = {
+        hour: now.getHours(),
+        minute: now.getMinutes(),
+        second: now.getSeconds()
+      };
+
+      const date = {
+        day: now.getDate(),
+        month: now.getMonth() + 1,
+        year: now.getFullYear() % 100 // last two digits
+      };
+
+      for (let unit in time) {
+        updateBulbs(unit, time[unit]);
+      }
+
+      for (let unit in date) {
+        updateBulbs(unit, date[unit]);
+      }
+    }
+
+    setInterval(updateClockAndCalendar, 1000);
+    updateClockAndCalendar();
+  </script>
+
+</body>
+</html>

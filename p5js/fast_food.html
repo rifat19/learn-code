@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js Fast Food</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+    <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+
+        background("#deebf7");
+        noStroke();
+
+        // Bun
+        fill("#ffd966");
+        arc(245, 311, 327, 238, PI, TWO_PI);
+        rect(80, 380, 325, 33);
+
+        // Salad and meat
+        fill("#548235");
+        rect(63, 320, 355, 9);
+        fill("#d44316");
+        rect(63, 340, 355, 35);
+
+        // Seeds
+        fill("white");
+        ellipse(124, 263, 15, 7);
+        ellipse(167, 288, 15, 7);
+        ellipse(185, 259, 15, 7);
+        ellipse(218, 231, 15, 7);
+        ellipse(234, 263, 15, 7);
+        ellipse(266, 291, 15, 7);
+        ellipse(299, 238, 15, 7);
+        ellipse(340, 279, 15, 7);
+        ellipse(353, 245, 15, 7);
+
+        // Drink
+        strokeWeight(4);
+        stroke("#843c0c");
+        line(638, 93, 695, 274);
+        noStroke();
+        fill("#2e75b6");
+        rect(571, 269, 148, 230);
+        triangle(538, 269, 571, 269, 571, 499);
+        triangle(719, 269, 719, 499, 752, 269);
+        
+      }
+    </script>
+  </body>
+</html>

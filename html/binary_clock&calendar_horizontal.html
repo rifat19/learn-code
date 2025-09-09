@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Binary Bulb Clock & Calendar</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .clock, .calendar {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      padding: 10px;
+      border: 1px solid #444;
+      border-radius: 10px;
+    }
+
+    .bulb-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .bulb {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #333;
+      box-shadow: 0 0 5px #000;
+      transition: background 0.3s;
+    }
+
+    .on {
+      background: deepskyblue;
+      box-shadow: 0 0 10px cyan;
+    }
+
+    .label {
+      font-size: 14px;
+      color: #aaa;
+      width: 60px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💡 Binary Bulb Clock & Calendar</h1>
+
+  <div class="clock" id="clock"></div>
+  <div class="calendar" id="calendar"></div>
+
+  <script>
+    const clockConfig = {
+      hour: [2, 2],
+      minute: [3, 4],
+      second: [3, 4]
+    };
+
+    const calendarConfig = {
+      day: [2, 4],
+      month: [1, 4],
+      year: [4, 4] // last two digits
+    };
+
+    function createSection(containerId, name, leftCount, rightCount) {
+      const container = document.getElementById(containerId);
+      const section = document.createElement('div');
+      section.className = 'section';
+      section.dataset.unit = name;
+
+      const label = document.createElement('div');
+      label.className = 'label';
+      label.textContent = name.toUpperCase();
+
+      const leftGroup = document.createElement('div');
+      leftGroup.className = 'bulb-group left';
+      for (let i = 0; i < leftCount; i++) {
+        const bulb = document.createElement('div');
+        bulb.className = 'bulb';
+        leftGroup.appendChild(bulb);
+      }
+
+      const rightGroup = document.createElement('div');
+      rightGroup.className = 'bulb-group right';
+      for (let i = 0; i < rightCount; i++) {
+        const bulb = document.createElement('div');
+        bulb.className = 'bulb';
+        rightGroup.appendChild(bulb);
+      }
+
+      section.appendChild(label);
+      section.appendChild(leftGroup);
+      section.appendChild(rightGroup);
+      container.appendChild(section);
+    }
+
+    // Create clock sections
+    for (let unit in clockConfig) {
+      createSection('clock', unit, clockConfig[unit][0], clockConfig[unit][1]);
+    }
+
+    // Create calendar sections
+    for (let unit in calendarConfig) {
+      createSection('calendar', unit, calendarConfig[unit][0], calendarConfig[unit][1]);
+    }
+
+    function updateBulbs(sectionName, value) {
+      const section = document.querySelector(`.section[data-unit="${sectionName}"]`);
+      const leftBulbs = section.querySelectorAll('.left .bulb');
+      const rightBulbs = section.querySelectorAll('.right .bulb');
+
+      const strVal = value.toString().padStart(2, '0');
+      const left = parseInt(strVal[0]);
+      const right = parseInt(strVal[1]);
+
+      const leftBinary = left.toString(2).padStart(leftBulbs.length, '0');
+      const rightBinary = right.toString(2).padStart(rightBulbs.length, '0');
+
+      leftBinary.split('').forEach((bit, i) => {
+	    if (leftBulbs[i]) {
+          leftBulbs[i].classList.toggle('on', bit === '1');
+		}
+      });
+
+      rightBinary.split('').forEach((bit, i) => {
+	    if (rightBulbs[i]) {
+          rightBulbs[i].classList.toggle('on', bit === '1');
+		}
+      });
+    }
+
+    function updateClockAndCalendar() {
+      const now = new Date();
+      const time = {
+        hour: now.getHours(),
+        minute: now.getMinutes(),
+        second: now.getSeconds()
+      };
+
+      const date = {
+        day: now.getDate(),
+        month: now.getMonth() + 1,
+        year: now.getFullYear() % 100
+      };
+
+      for (let unit in time) {
+        updateBulbs(unit, time[unit]);
+      }
+
+      for (let unit in date) {
+        updateBulbs(unit, date[unit]);
+      }
+    }
+
+    setInterval(updateClockAndCalendar, 1000);
+    updateClockAndCalendar();
+  </script>
+
+</body>
+</html>

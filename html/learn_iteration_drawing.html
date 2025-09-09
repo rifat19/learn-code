@@ -1,0 +1,87 @@
+<!DOCKTYPE html>
+<html>
+<head>
+<title>Learn Drawing</title>
+<style>
+#container {
+	display: flex;
+	/*gap: 10px;*/
+	/*margin-top: 20px;*/
+	flex-wrap: wrap;
+}
+
+@keyframes fadeInScale {
+	0% {
+		opacity: 0;
+		transform: scale(0.5);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+.shape {
+	width: 30px;
+	height: 30px;
+	background: #333;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/*margin: 5px;*/
+	animation: fadeInScale 1s ease-out;
+	transition: all 0.3s ease;
+}
+</style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script>
+
+let count = 0;
+
+// let count = 0;
+
+function getRandongColor() {
+	const letters = '0123456789ABCDEF';
+	let color = '#';
+	for (let i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
+
+function addCircleSquare() {
+	const shape = document.createElement('div');
+	shape.className = 'shape';
+	shape.textContent = count + 1;
+	shape.style.background = getRandongColor();
+	shape.style.borderRadius = count % 2 === 0 ? '0' : '50%';
+	// if (count % 2 === 0) {
+	// 	shape.style.borderRadius = '0';
+	// } else {
+	// 	shape.style.borderRadius = '50%'
+	// }
+
+	document.getElementById('container').appendChild(shape);
+	count++;
+
+	setTimeout(() => {
+		shape.remove();
+	}, 240000);
+
+	if (count >= 999) {
+		document.getElementById('container').innerHTML = '';
+		count = 0;
+	}
+}
+setInterval(addCircleSquare, 500);
+
+</script>
+
+</body>
+</html>

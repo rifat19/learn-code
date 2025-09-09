@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>p5.js Pizza</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+</head>
+
+<body>
+    <script>
+        function setup() {
+            createCanvas(800, 600);
+            noStroke();
+            //background("#adb9ca");
+            textSize(14);
+
+            /* // Check if mouse is inside canvas
+            if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+                // Draw crosshairs
+                stroke(180);
+                line(mouseX, 0, mouseX, height);
+                line(0, mouseY, width, mouseY);
+
+                // Set fill for text
+                noStroke();
+                fill(0);
+                let coordText = `x: ${mouseX}, y: ${mouseY}`;
+
+                // Calculate dynamic text position
+                let xPos = mouseX + 10;
+                let yPos = mouseY - 10;
+
+                // Adjust if close to right edge
+                if (xPos + textWidth(coordText) > width) {
+                    xPos = mouseX - textWidth(coordText) - 10;
+                }
+                // Adjust if close to top edge
+                if (yPos < 20) {
+                    yPos = mouseY + 20;
+                }
+
+                text(coordText, xPos, yPos);
+            } */
+        }
+
+        function draw() {
+            background("#adb9ca");
+
+            // Plate & Pizza
+            fill("#385723");
+            circle(400, 300, 260);
+            fill("white");
+            circle(400, 300, 254);
+            fill("#f7c9ab");
+            circle(400, 300, 225);
+
+            // Pepperoni
+            fill("#c00000");
+            circle(350, 230, 30);
+            circle(433, 220, 30);
+            circle(470, 270, 30);
+            circle(460, 340, 30);
+            circle(400, 375, 30);
+            circle(335, 350, 30);
+            circle(320, 290, 30);
+            circle(400, 270, 30);
+            circle(390, 320, 30);
+
+            // Olive
+            fill("#404040");
+            circle(317, 318, 9);
+            circle(345, 299, 9);
+            circle(338, 266, 9);
+            circle(405, 238, 9);
+            circle(445, 292, 9);
+            circle(480, 300, 9);
+            circle(442, 370, 9);
+            circle(415, 338, 9);
+            circle(358, 377, 9);
+
+            // Pineapple
+            fill("#ffe699");
+            triangle(x=390, y=200, x-10, y+17, x+10, y+17);
+            triangle(x=462, y=222, x-10, y+17, x+10, y+17);
+            triangle(x=435, y=255, x-10, y+17, x+10, y+17);
+            triangle(x=319, y=238, x-10, y+17, x+10, y+17);
+            triangle(x=365, y=267, x-10, y+17, x+10, y+17);
+            triangle(x=487, y=312, x-10, y+17, x+10, y+17);
+            triangle(x=372, y=338, x-10, y+17, x+10, y+17);
+            triangle(x=312, y=320, x-10, y+17, x+10, y+17);
+
+
+            // Check if mouse is inside canvas
+            if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+                // Draw crosshairs
+                stroke(180);
+                line(mouseX, 0, mouseX, height);
+                line(0, mouseY, width, mouseY);
+
+                // Set fill for text
+                noStroke();
+                fill(0);
+                let coordText = `x: ${mouseX}, y: ${mouseY}`;
+
+                // Calculate dynamic text position
+                let xPos = mouseX + 10;
+                let yPos = mouseY - 10;
+
+                // Adjust if close to right edge
+                if (xPos + textWidth(coordText) > width) {
+                    xPos = mouseX - textWidth(coordText) - 10;
+                }
+                // Adjust if close to top edge
+                if (yPos < 20) {
+                    yPos = mouseY + 20;
+                }
+
+                text(coordText, xPos, yPos);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

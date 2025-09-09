@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js Duplex</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+    <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+
+        background("#bdd7ee");
+        fill("#548235");
+        rect(0, 500, 800, 100);
+
+        // Sun
+        fill("#ffd966");
+        circle(77, 67, 92);
+        triangle(67, 130, 82, 129, 81, 185);
+        triangle(127, 109, 136, 97, 176, 136);
+        triangle(145, 53, 143, 37, 200, 35);
+
+        // House
+        fill("#ffc000");
+        rect(150, 397, 554, 103);
+        fill("#d44316");
+        rect(150, 252, 554, 145);
+        fill("#ed7d31");
+        triangle(134, 252, 428, 153, 720, 252);
+        fill("#934bc9");
+        triangle(506, 252, 612, 130, 720, 252);
+
+        // Porch
+        fill("#00b0f0");
+        rect(357, 397, 15, 113);
+        rect(481, 397, 15, 113);
+        rect(405, 438, 48, 62);
+        fill("#0070c0");
+        triangle(335, 397, 427, 316, 520, 397);
+
+        // Windows
+        fill("#c5e0b4");
+        rect(200, 423, 87, 50);
+        rect(581, 423, 87, 50);
+        fill("#f8cbad");
+        rect(218, 282, 50, 86);
+        rect(601, 282, 50, 86);
+        rect(403, 277, 47, 27);
+        fill("#e254d4");
+        circle(614, 206, 46);
+        
+      }
+    </script>
+  </body>
+</html>

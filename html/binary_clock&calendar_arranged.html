@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Binary Bulb Clock & Calendar</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .digit {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .bulb {
+      width: 30px;
+      height: 30px;
+      margin: 4px;
+      border-radius: 50%;
+      background: #333;
+      box-shadow: 0 0 5px #000;
+    }
+    .on {
+      background: #0ff;
+      box-shadow: 0 0 10px #0ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Binary Bulb Clock & Calendar</h1>
+  <div id="clock"></div>
+
+  <script>
+    function createDigit(value, bits) {
+      const digit = document.createElement('div');
+      digit.className = 'digit';
+      for (let i = 0; i < bits; i++) {
+        const bulb = document.createElement('div');
+        bulb.className = 'bulb';
+        if (value & (1 << i)) bulb.classList.add('on');
+        digit.appendChild(bulb);
+      }
+      return digit;
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const container = document.getElementById('clock');
+      container.innerHTML = '';
+
+      const hour = now.getHours().toString().padStart(2, '0');
+      const minute = now.getMinutes().toString().padStart(2, '0');
+      const second = now.getSeconds().toString().padStart(2, '0');
+      const day = now.getDate().toString().padStart(2, '0');
+      const month = (now.getMonth() + 1).toString().padStart(2, '0');
+      const year = now.getFullYear().toString();
+
+      // Time row: H M S
+      const timeRow = document.createElement('div');
+      timeRow.className = 'row';
+      [...hour].forEach((d, i) => timeRow.appendChild(createDigit(parseInt(d), i === 0 ? 2 : 4)));
+      [...minute].forEach((d, i) => timeRow.appendChild(createDigit(parseInt(d), i === 0 ? 3 : 4)));
+      [...second].forEach((d, i) => timeRow.appendChild(createDigit(parseInt(d), i === 0 ? 3 : 4)));
+      container.appendChild(timeRow);
+
+      // Date row: Y M D
+      const dateRow = document.createElement('div');
+      dateRow.className = 'row';
+      [...year].forEach(d => dateRow.appendChild(createDigit(parseInt(d), 4)));
+      [...month].forEach((d, i) => dateRow.appendChild(createDigit(parseInt(d), i === 0 ? 1 : 4)));
+      [...day].forEach((d, i) => dateRow.appendChild(createDigit(parseInt(d), i === 0 ? 2 : 4)));
+      container.appendChild(dateRow);
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>

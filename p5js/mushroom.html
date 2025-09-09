@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js Mushroom</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+
+        // Background
+        fill("#a9d183");
+        rect(0, 0, 800, 400);
+        fill("#843c0c");
+        rect(0, 400, 800, 200);
+
+        // Mushroom
+        fill("#ffc000");
+        rect(328, 314, 72, 212);
+        fill("#c00000");
+        arc(365, 314, 386, 396, PI, TWO_PI);
+        fill("white");
+        circle(245, 271, 40);
+        circle(285, 195, 36);
+        circle(341, 167, 24);
+        circle(423, 171, 28);
+        circle(491, 233, 28);
+        circle(335, 249, 26);
+        circle(393, 220, 44);
+        circle(443, 279, 46);
+
+      }
+    </script>
+  </body>
+</html>

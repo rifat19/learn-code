@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js Dog</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+    <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        // noStroke();
+      }
+
+      function draw() {
+
+        background("#00b0f0");
+
+        // Head, body and ears
+        strokeWeight(1);
+        stroke("black");
+        fill("#f8cbad");
+        rect(315, 95, 200, 380);
+        triangle(279, 95, 315, 95, 279, 240);
+        triangle(515, 95, 551, 95, 551, 240);
+
+        // Back legs
+        rect(257, 315, 58, 160);
+        line(274, 454, 274, 475);
+        line(293, 454, 293, 475);
+        rect(515, 315, 58, 160);
+        line(538, 454, 538, 475);
+        line(557, 454, 557, 475);
+
+        // Front legs
+        rect(375, 445, 52, 55);
+        line(393, 481, 393, 499);
+        line(412, 481, 412, 499);
+        rect(375+52, 445, 52, 55);
+        line(393+52, 481, 393+52, 499);
+        line(412+52, 481, 412+52, 499);
+
+        // Mouth, nose, eyes
+        strokeWeight(3);
+        line(347, 226, 356, 235);
+        line(356, 235, 487, 235);
+        line(487, 235, 498, 224);
+        line(423, 235, 417, 211);
+        noStroke();
+        fill("#843c0c");
+        rect(364, 185, 106, 27);
+        fill("black");
+        circle(382, 152, 22);
+        circle(454, 152, 22);
+        
+      }
+    </script>
+  </body>
+</html>

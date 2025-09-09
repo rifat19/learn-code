@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Learn arc()</title>
+	<script src="../../../p5/p5.js"></script>
+	<style>
+		body {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+			padding: 20px;
+		}
+		.sketch {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="sketch1" class="sketch"></div>
+	<div id="sketch2" class="sketch"></div>
+	<div id="sketch3" class="sketch"></div>
+	<div id="sketch4" class="sketch"></div>
+	<div id="sketch5" class="sketch"></div>
+	<div id="sketch6" class="sketch"></div>
+	<div id="sketch7" class="sketch"></div>
+	<div id="sketch8" class="sketch"></div>
+	<div id="sketch9" class="sketch"></div>
+	<div id="sketch10" class="sketch"></div>
+	<div id="sketch11" class="sketch"></div>
+	
+	<script>
+		//sketch1
+		const s1 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100);
+				p.background(200);
+				p.arc(50, 50, 80, 80, 0, p.PI + p.HALF_PI);
+			};
+		};
+		new p5(s1, 'sketch1');
+
+		//sketch2
+		const s2 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100);
+				p.background(200);
+				p.arc(50, 50, 80, 40, 0, p.PI + p.HALF_PI);
+			};
+		};
+		new p5(s2, 'sketch2');
+
+		//sketch3
+		const s3 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100);
+				p.background(200);
+
+				//Bottom-right
+				p.arc(50, 55, 50, 50, 0, p.HALF_PI);
+
+				p.noFill();
+
+				//Bottom-left
+				p.arc(50, 55, 60, 60, p.HALF_PI, p.PI);
+
+				//Top-left
+				p.arc(50, 55, 70, 70, p.PI, p.PI + p.QUARTER_PI);
+
+				//Top-right
+				p.arc(50, 55, 80, 80, p.PI + p.QUARTER_PI, p.TWO_PI);
+			};
+		};
+		new p5(s3, 'sketch3');
+
+		//sketch4
+		const s4 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100);
+				p.background(200);
+
+				p.arc(50, 50, 80, 80, 0, p.PI + p.QUARTER_PI);
+			};
+		};
+		new p5(s4, 'sketch4');
+
+		//sketch5
+		const s5 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100);
+				p.background(200);
+
+				p.arc(50, 50, 80, 80, 0, p.PI + p.QUARTER_PI, p.OPEN);
+			};
+		};
+		new p5(s5, 'sketch5');
+
+		//sketch6
+		const s6 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100);
+				p.background(200);
+
+				p.arc(50, 50, 80, 80, 0, p.PI + p.QUARTER_PI, p.CHORD);
+			};
+		};
+		new p5(s6, 'sketch6');
+
+		//sketch7
+		const s7 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100);
+				p.background(200);
+
+				p.arc(50, 50, 80, 80, 0, p.PI + p.QUARTER_PI, p.PIE);
+			};
+		};
+		new p5(s7, 'sketch7');
+
+		//sketch8
+		const s8 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100, p.WEBGL);
+				p.background(200);
+
+				p.arc(0, 0, 80, 80, 0, p.PI + p.QUARTER_PI, p.PIE);
+			};
+		};
+		new p5(s8, 'sketch8');
+
+		//sketch9
+		const s9 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100, p.WEBGL);
+				p.background(200);
+
+				p.arc(0, 0, 80, 80, 0, p.PI + p.QUARTER_PI, p.PIE, 5);
+			};
+		};
+		new p5(s9, 'sketch9');
+
+		//sketch10
+		const s10 = (p) => {
+			p.setup = () => {
+				p.createCanvas(100, 100);
+			};
+
+			p.draw = () => {
+				p.background(0);
+				p.noStroke();
+				p.fill(255, 255, 0);
+
+				let biteSize = p.PI / 16;
+				let startAngle = biteSize * p.sin(p.frameCount * 0.1) + biteSize;
+				let endAngle = p.TWO_PI - startAngle;
+
+				p.arc(50, 50, 80, 80, startAngle, endAngle, p.PIE);
+			};
+		};
+		new p5(s10, 'sketch10');
+
+		// skecth11
+		const s11 = (p) => {
+		  let angle = 0;
+		  let rotating = true;
+		  let pauseStart = 0;
+		  let pauseDuration = 1000; // milliseconds
+
+		  p.setup = () => {
+		    p.createCanvas(100, 100);
+		    p.angleMode(p.RADIANS);
+		    
+		  };
+
+		  p.draw = () => {
+		    p.background(200);
+		    p.translate(50, 55); // center of rotation
+
+		    if (rotating) {
+		      angle += 0.03;
+
+		      if (angle >= p.TWO_PI) {
+		        angle = 0;
+		        rotating = false;
+		        pauseStart = p.millis();
+		      }
+		    } else {
+		      if (p.millis() - pauseStart > pauseDuration) {
+		        rotating = true;
+		      }
+		    }
+
+		    // Draw rotating arc
+		    p.stroke(255, 0, 0);
+		    p.fill(255);
+		    p.arc(0, 0, 50, 50, angle, angle + p.HALF_PI);
+		    p.noFill();
+		    p.arc(0, 0, 60, 60, angle + p.HALF_PI, angle + p.PI);
+		    p.fill(250,120,0);
+		    p.arc(0, 0, 70, 70, angle + p.PI, angle + p.PI + p.HALF_PI);
+		    p.noFill();
+		    p.arc(0, 0, 80, 80, angle + p.PI + p.HALF_PI, angle + p.TWO_PI);
+		  };
+		};
+		new p5(s11, 'sketch11');
+
+	</script>
+
+</body>
+</html>

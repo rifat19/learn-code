@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js Pine Trees</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+
+        // Background
+        fill("#dae3f3");
+        rect(0, 0, 800, 400);
+        fill("#f2f2f2");
+        rect(0, 400, 800, 200);
+
+        // Frist tree
+        fill("#843c0c");
+        rect(205, 368, 26, 151);
+        fill("#385723");
+        triangle(220, 165, 90, 370, 350, 370);
+        fill("#538234");
+        triangle(220, 149, 130, 290, 309, 290);
+        fill("#a9d183");
+        triangle(220, 134, 158, 230, 281, 230);
+
+        // Second tree
+        fill("#843c0c");
+        rect(205+405, 368-45, 26, 151);
+        fill("#385723");
+        triangle(220+405, 165-45, 90+405, 370-45, 350+405, 370-45);
+        fill("#538234");
+        triangle(220+405, 149-45, 130+405, 290-45, 309+405, 290-45);
+        fill("#a9d183");
+        triangle(220+405, 134-45, 158+405, 230-45, 281+405, 230-45);
+      }
+    </script>
+  </body>
+</html>

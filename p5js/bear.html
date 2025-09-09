@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js bear</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+    <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+        
+        background("#b4c7e7");
+
+        // Head and ears
+        noStroke();
+        fill("#843c0c");
+        circle(281, 187, 112);
+        circle(527, 187, 112);
+        fill("#c55a11");
+        circle(406, 300, 324);
+
+        // Eyes
+        fill("white");
+        circle(346, 224, 62);
+        circle(485, 224, 62);
+        fill("black");
+        circle(358, 240, 22);
+        circle(473, 240, 22);
+
+        // Nose and mouth
+        fill("#843c0c");
+        circle(406, 395, 136);
+        fill("#bcb9b6");
+        rect(406, 369, 3, 94);
+        fill("black");
+        circle(406, 349, 44);
+
+        // Garment
+        fill("#548235");
+        triangle(257, 509, 257, 420, 403, 465);
+        triangle(561, 508, 561, 422, 413, 465);
+        fill("#21e7cf");
+        circle(407, 465, 16);
+
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js Bird</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+    <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+
+        background("#a9d18e");
+
+        // Legs
+        strokeWeight(4);
+        stroke("black");
+        line(380, 407, 380, 500);
+        line(380, 500, 355, 493);
+        line(380, 500, 354, 508);
+        line(380, 500, 365, 518);
+        line(460, 412, 460, 500);
+        line(460, 500, 434, 492);
+        line(460, 500, 434, 509);
+        line(460, 500, 445, 517);
+
+        // Tail and Body
+        noStroke();
+        fill("#c55a11");
+        triangle(554, 280, 603, 284, 551, 323);
+        fill("#843c0c");
+        circle(426, 291, 260);
+        fill("#c55a11");
+        ellipse(447, 318, 142, 39);
+        fill("#d44316");
+        circle(339, 348, 20);
+        circle(364, 377, 20);
+        circle(397, 398, 20);
+
+        // Head
+        fill("#bf9000");
+        triangle(196, 199, 245, 180, 246, 190);
+        fill("#c55a11");
+        circle(308, 181, 128);
+        fill("white");
+        ellipse(270, 167, 20, 31);
+        fill("black");
+        circle(267, 162, 8);
+        
+      }
+    </script>
+  </body>
+</html>

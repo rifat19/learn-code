@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Learn Line Drawing</title>
+	<script src="p5/p5.js"></script>
+</head>
+<body>
+	<script>
+		function setup() {
+			createCanvas(windowWidth, windowHeight, WEBGL);
+			noFill();
+			stroke(0);
+			
+			for (let i = -width / 2; i < width / 2; i += 40) {
+				for (let j = -height /2; j < height / 2; j += 40) {
+					push();
+					translate(i, j);
+					rotateX(noise(i * 0.01, j * 0.01) * PI);
+					rotateY(noise(j * 0.01, i * 0.01) * PI);
+					let w = noise(i * 0.02, j * 0.02) * 40;
+					let h = noise(j * 0.02, i * 0.02) * 40;
+					rect(-w / 2, -h / 2, w, h);
+					pop();
+				}
+			}
+		}
+	</script>
+</body>
+</html>

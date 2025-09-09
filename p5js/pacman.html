@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js sketch</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+    <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+
+        background("#44546a");
+        noStroke();
+
+        // Pacman
+        fill("#ffc000");
+        arc(270, 300, 264, 264, PI/6, 11*PI/6);
+
+        // Eye
+        fill("white");
+        circle(272, 213, 32);
+        fill("black");
+        circle(280, 219, 10);
+
+        // Food
+        fill("red");
+        circle(448, 300, 48);
+        circle(548, 300, 48);
+        circle(648, 300, 48);
+        
+      }
+    </script>
+  </body>
+</html>

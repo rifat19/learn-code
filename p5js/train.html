@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js train</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+    <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+
+        // Background
+        fill("#8faadc");
+        rect(0, 0, 800, 340);
+        fill("#a9d18e");
+        rect(0, 340, 800, 260);
+
+        // Main part
+        fill("#c55a11");
+        triangle(127, 428, 252, 428, 252, 300);
+        rect(502, 215, 175, 213);
+        rect(283, 258, 14, 42);
+        fill("#ffc000");
+        rect(252, 300, 250, 128);
+
+        // Windows
+        fill("#f8cbad");
+        rect(523, 236, 55, 58);
+        rect(584, 236, 74, 58);
+        rect(523, 300, 135, 96);
+
+        // Wheels
+        fill("#262626");
+        circle(260, 454, 86);
+        circle(598, 454, 86);
+        fill("#d9d9d9");
+        circle(260, 454, 63);
+        circle(598, 454, 63);
+        fill("#262626");
+        rect(235, 443, 344, 10);
+
+        // Road & Smoke
+        fill("#3b3838");
+        rect(0, 492, 800, 30);
+        fill("#f2f2f2");
+        ellipse(316, 209, 29, 20);
+        ellipse(377, 166, 46, 32);
+        ellipse(442, 114, 68, 47);
+
+      }
+    </script>
+  </body>
+</html>

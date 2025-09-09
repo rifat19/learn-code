@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js Cat</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+     <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+        
+        // Background
+        fill("#4472c4");
+        rect(0, 0, 800, 500);
+        fill("#7030a0");
+        rect(0, 500, 800, 100);
+
+        // Ears and body
+        fill("#f4b183");
+        triangle(318, 99, 318, 175, 359, 121);
+        triangle(483, 99, 483, 184, 435, 121);
+        circle(397, 415, 240);
+
+        // Head and feet
+        fill("#f8cbad");
+        triangle(397, 69, 138, 410, 655, 410);
+        circle(332, 525, 50);
+        circle(468, 525, 50);
+
+        // Eyes
+        fill("#44546a");
+        ellipse(339, 215, 29, 40);
+        ellipse(461, 215, 29, 40);
+
+        // Nose
+        fill("#7f7f7f");
+        triangle(360, 270, 440, 270, 402, 339);
+        noFill();
+        stroke("#7f7f7f");
+        arc(447, 338, 90, 68, HALF_PI/2, PI);
+        arc(357, 338, 90, 68, 0, 3*HALF_PI/2);
+
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quantum Cascade</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+</head>
+<body>
+<script>
+  let layers = [];
+  let pulses = [];
+  let colors = [];
+  let pulseSpeed = 0.005;
+  let spawnInterval = 300;
+  let lastSpawnTime = 0;
+  let inputNode, outputNode;
+
+  function setup() {
+    createCanvas(windowWidth, windowHeight);
+    spacingX = width / 11;
+
+    // Strong, distinct colors
+    for (let i = 0; i < 10; i++) {
+      colors.push(color(random(180, 255), random(80, 200), random(80, 200)));
+    }
+
+    // Input and output nodes
+    inputNode = { pos: createVector(spacingX * 0.5, height / 2) };
+    outputNode = { pos: createVector(spacingX * 10.5, height / 2) };
+
+    // Create layers
+    for (let l = 0; l < 10; l++) {
+      let layer = [];
+      let numNodes = (l === 0 || l === 9) ? 3 : 9;
+      let spacingY = height / (numNodes + 1);
+      for (let n = 0; n < numNodes; n++) {
+        let x = spacingX * (l + 1);
+        let y = spacingY * (n + 1);
+        layer.push({ pos: createVector(x, y) });
+      }
+      layers.push(layer);
+    }
+  }
+
+  function draw() {
+    background(20);
+
+    stroke(80);
+
+    // Input to first layer (no intra-layer connections)
+    for (let node of layers[0]) {
+      line(inputNode.pos.x, inputNode.pos.y, node.pos.x, node.pos.y);
+    }
+
+    // Between layers
+    for (let l = 0; l < layers.length - 1; l++) {
+      for (let a of layers[l]) {
+        for (let b of layers[l + 1]) {
+          line(a.pos.x, a.pos.y, b.pos.x, b.pos.y);
+        }
+      }
+    }
+
+    // Final layer to output
+    for (let node of layers[layers.length - 1]) {
+      line(node.pos.x, node.pos.y, outputNode.pos.x, outputNode.pos.y);
+    }
+
+    // Spawn pulses from input node
+    if (millis() - lastSpawnTime > spawnInterval) {
+      let toNode = random(layers[0]);
+      pulses.push({
+        from: inputNode.pos.copy(),
+        to: toNode.pos.copy(),
+        progress: 0,
+        layer: -1,
+        color: color(255, 255, 0) // bright yellow input
+      });
+      lastSpawnTime = millis();
+    }
+
+    // Update and draw pulses
+    let newPulses = [];
+    for (let p of pulses) {
+      if (p.progress < 1) {
+        let x = lerp(p.from.x, p.to.x, p.progress);
+        let y = lerp(p.from.y, p.to.y, p.progress);
+        fill(p.color);
+        noStroke();
+        ellipse(x, y, 12, 12);
+        p.progress += pulseSpeed;
+        newPulses.push(p);
+      } else if (p.layer < layers.length - 1) {
+        // Move to next layer
+        let nextFrom = p.to.copy();
+        let nextToNode = random(layers[p.layer + 1]);
+        newPulses.push({
+          from: nextFrom,
+          to: nextToNode.pos.copy(),
+          progress: 0,
+          layer: p.layer + 1,
+          color: colors[p.layer + 1]
+        });
+      } else if (p.layer === layers.length - 1) {
+        // Final layer → output node
+        newPulses.push({
+          from: p.to.copy(),
+          to: outputNode.pos.copy(),
+          progress: 0,
+          layer: "output",
+          color: color(0, 255, 180) // teal output
+        });
+      }
+      // Else: pulse reached output, do not continue
+    }
+    pulses = newPulses;
+
+    // Draw input node
+    fill(255, 255, 0);
+    stroke(255);
+    ellipse(inputNode.pos.x, inputNode.pos.y, 30, 30);
+
+    // Draw layers
+    for (let l = 0; l < layers.length; l++) {
+      for (let node of layers[l]) {
+        fill(colors[l]);
+        stroke(255);
+        ellipse(node.pos.x, node.pos.y, 20, 20);
+      }
+    }
+
+    // Draw output node
+    fill(0, 255, 180);
+    stroke(255);
+    ellipse(outputNode.pos.x, outputNode.pos.y, 30, 30);
+  }
+</script>
+</body>
+</html>

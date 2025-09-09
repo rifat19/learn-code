@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js sketch</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+    <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+
+        // Background
+        fill("#b4c7e7");
+        rect(0, 0, 800, 300);
+        fill("#8faadc");
+        rect(0, 300, 800, 300);
+
+        // Body and eyes
+        fill("#548235");
+        rect(220, 200, 276, 206);
+        arc(274, 200, 108, 108, PI, TWO_PI);
+        arc(442, 200, 108, 108, PI, TWO_PI);
+        fill("white");
+        circle(279, 176, 42);
+        circle(437, 176, 42);
+        fill("black");
+        circle(289, 180, 12);
+        circle(428, 183, 12);
+
+        // Nose and mouth
+        circle(345, 233, 6);
+        circle(382, 233, 6);
+        fill("#92d050");
+        arc(358, 274, 197, 134, 0, PI);
+        
+      }
+    </script>
+  </body>
+</html>

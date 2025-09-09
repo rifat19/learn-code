@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js sketch</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script> -->
+    <script src="p5/p5.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        noStroke();
+      }
+
+      function draw() {
+
+        // Background
+        fill("#b4c7e7");
+        rect(0, 0, 800, 400);
+        fill("#548235");
+        rect(0, 400, 800, 100);
+        fill("#a5a5a5");
+        rect(0, 500, 800, 100);
+
+        // Building 1
+        stroke(1);
+        fill("#e254d4");
+        rect(67, 272, 197, 228);
+        fill("#21e7cf");
+        rect(84, 292, 48, 36);
+        rect(143, 292, 48, 36);
+        rect(201, 292, 48, 36);
+        rect(84, 347, 48, 36);
+        rect(143, 347, 48, 36);
+        rect(201, 347, 48, 36);
+        fill("#934bc9");
+        rect(132, 425, 27, 75);
+        rect(159, 425, 27, 75);
+        rect(186, 425, 27, 75);
+
+        // Building 2
+        fill("#bf9000");
+        rect(264, 187, 106, 313);
+        fill("#21e7cf");
+        circle(320, 248, 66);
+        fill("#010101");
+        rect(287, 248, 66, 0.5);
+        rect(320, 215, 0.5, 66);
+        fill("#21e7cf");
+        square(292, 295, 13);
+        square(314, 295, 13);
+        square(337, 295, 13);
+        square(292, 322, 13);
+        square(314, 322, 13);
+        square(337, 322, 13);
+        square(292, 347, 13);
+        square(314, 347, 13);
+        square(337, 347, 13);
+        fill("#c55a11");
+        arc(320, 464, 45, 35, PI, 2*PI);
+        rect(297, 464, 45, 36);
+
+        // Building 3
+        fill("#934bc9");
+        rect(370, 322, 80, 178);
+        fill("#21e7cf");
+        rect(379, 333, 63, 12);
+        rect(379, 354, 63, 12);
+        rect(379, 376, 63, 12);
+        fill("#4472c4");
+        rect(388, 465, 46, 35);
+        rect(411, 465, 0.5, 35);
+
+        // Building 4
+        fill("#d44316");
+        rect(450, 142, 150, 358);
+        fill("#21e7cf");
+        rect(474, 171, 24, 160);
+        rect(521, 171, 24, 160);
+        rect(562, 171, 24, 160);
+        fill("#4472c4");
+        rect(495, 434, 37, 66);
+        rect(532, 434, 37, 66);
+
+        // Tree
+        noStroke();
+        fill("#843c0c");
+        rect(705, 370, 10, 50);
+        fill("#385723");
+        triangle(709, 291, 679, 370, 738, 370);
+        
+      }
+    </script>
+  </body>
+</html>

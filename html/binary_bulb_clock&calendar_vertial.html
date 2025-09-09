@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Binary Bulb Clock & Calendar</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .digit {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .bulb {
+      width: 30px;
+      height: 30px;
+      margin: 4px;
+      border-radius: 50%;
+      background: #333;
+      box-shadow: 0 0 5px #000;
+    }
+    .on {
+      background: #0ff;
+      box-shadow: 0 0 10px #0ff;
+    }
+    .label {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>Binary Bulb Clock & Calendar</h1>
+  <div id="clock"></div>
+
+  <script>
+    function createDigit(value, bits, label) {
+      const digit = document.createElement('div');
+      digit.className = 'digit';
+      for (let i = 0; i < bits; i++) {
+        const bulb = document.createElement('div');
+        bulb.className = 'bulb';
+        if (value & (1 << i)) bulb.classList.add('on');
+        digit.appendChild(bulb);
+      }
+      const lbl = document.createElement('div');
+      lbl.className = 'label';
+      lbl.textContent = label;
+      digit.appendChild(lbl);
+      return digit;
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const container = document.getElementById('clock');
+      container.innerHTML = '';
+
+      const hour = now.getHours().toString().padStart(2, '0');
+      const minute = now.getMinutes().toString().padStart(2, '0');
+      const second = now.getSeconds().toString().padStart(2, '0');
+      const day = now.getDate().toString().padStart(2, '0');
+      const month = (now.getMonth() + 1).toString().padStart(2, '0');
+      const year = now.getFullYear().toString();
+
+      const sections = [
+        { label: 'Hour', digits: hour, bits: [2, 4] },
+        { label: 'Minute', digits: minute, bits: [3, 4] },
+        { label: 'Second', digits: second, bits: [3, 4] },
+        { label: 'Day', digits: day, bits: [2, 4] },
+        { label: 'Month', digits: month, bits: [1, 4] },
+        { label: 'Year', digits: year, bits: [4, 4, 4, 4] }
+      ];
+
+      sections.forEach(section => {
+        const row = document.createElement('div');
+        row.className = 'row';
+        section.digits.split('').forEach((d, i) => {
+          row.appendChild(createDigit(parseInt(d), section.bits[i], `${section.label} ${i + 1}`));
+        });
+        container.appendChild(row);
+      });
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>

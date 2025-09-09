@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js Mouse</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(800, 600);
+        // noStroke();
+      }
+
+      function draw() {
+        background("#a6cf87");
+        noStroke();
+
+        // Head and ears
+        fill("#c55a11");
+        triangle(242, 192, 556, 192, 400, 500);
+        circle(242, 192, 200);
+        circle(556, 192, 200);
+        fill("#242424");
+        triangle(347, 395, 453, 395, 400, 500);
+
+        // Eyes
+        fill("white");
+        circle(344, 280, 50);
+        circle(455, 280, 50);
+        fill("black");
+        circle(355, 288, 16);
+        circle(445, 288, 16);
+
+        // Whiskers
+        stroke("#242424");
+        strokeWeight(3);
+        line(282, 403, 345, 427);
+        line(287, 485, 345, 462);
+        line(450, 437, 515, 409);
+        line(442, 465, 512, 486);
+      }
+    </script>
+  </body>
+</html>

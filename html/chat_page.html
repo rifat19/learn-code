@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat Page</title>
+	<style>
+		body {
+			margin: 0;
+			font-family: sans-serif;
+			background: #f0f0f0;
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+		}
+
+		#chatContainer {
+			flex: 1;
+			padding: 20px;
+			overflow-y: auto;
+			background: #fff;
+			border-bottom: 1px solid #ccc;
+		}
+
+		.message {
+			background: #e0e0ff;
+			padding: 10px 15px;
+			margin: 10px 0;
+			border-radius: 8px;
+			max-width: 60%;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			animation: fadeIn 0.3s ease;
+		}
+
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(10px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		#inputArea {
+			display: flex;
+			padding: 10px;
+			background: #ddd;
+		}
+
+		#messageInput {
+			flex: 1;
+			padding: 10px;
+			font-size: 16px;
+			border: none;
+			border-radius: 4px;
+		}
+
+		#sendButton {
+			padding: 10px 20px;
+			margin-left: 10px;
+			font-size: 16px;
+			background: #4a90e2;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		#sendButton:hover {
+			background: #357ab8;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="chatContainer"></div>
+
+	<div id="inputArea">
+		<input type="text" id="messageInput" placeholder="Type your message..." />
+		<button id="sendButton">Send</button>
+	</div>
+	
+	<script>
+		const chatContainer = document.getElementById('chatContainer');
+		const messageInput = document.getElementById('messageInput');
+		const sendButton = document.getElementById('sendButton');
+
+		function addMessage(text) {
+			const messageDiv = document.createElement('div');
+			messageDiv.className = 'message';
+			messageDiv.textContent = text;
+			chatContainer.appendChild(messageDiv);
+			chatContainer.scrollTop = chatContainer.scrollHeight;
+		}
+
+		sendButton.addEventListener('click', () => {
+			const text = messageInput.value.trim();
+			if (text !== '') {
+				addMessage(text);
+				messageInput.value = '';
+			}
+		});
+
+		messageInput.addEventListener('keypress', (e) => {
+			if (e.key === 'Enter') {
+				sendButton.click();
+			}
+		});
+
+	</script>
+
+</body>
+</html>
